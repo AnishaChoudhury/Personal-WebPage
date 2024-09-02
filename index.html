@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anisha Choudhury's Personal Webpage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #00cec9;
+            --background-color: #ffffff;
+            --text-color: #2d3436;
+            --card-background: #f5f6fa;
+            --header-color: #4834d4;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+            background-color: var(--header-color);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            margin: 5px 15px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p, ul {
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .experience-item {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 30px;
+        }
+        .experience-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-color);
+            font-size: 24px;
+            line-height: 1;
+        }
+        .experience-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            text-align: center;
+        }
+
+        .skill-bar {
+            background-color: #e0e0e0;
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            background-color: var(--secondary-color);
+            height: 100%;
+            border-radius: 5px;
+            width: 0;
+            transition: width 1s ease-out;
+        }
+
+        .experience-item, .education-item, .certification-item {
+            margin-bottom: 15px;
+        }
+
+        .hobbies ul {
+            text-align: center;
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dark-mode {
+            --background-color: #2d3436;
+            --text-color: #dfe6e9;
+            --card-background: #34495e;
+            --header-color: #2c3e50;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .animated.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            background-color: var(--header-color);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anisha Choudhury</h1>
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#projects">Projects</a>
+            <a href="#hobbies">Hobbies</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <button id="theme-toggle">Toggle Dark Mode</button>
+
+    <div class="container">
+        <section id="about" class="card animated">
+            <h2>About Me</h2>
+            <p>Hello! I'm Anisha Choudhury, a Data Engineer at Blenheim Chalcot Company. I specialize in building and maintaining scalable data pipelines, optimizing data workflows, and ensuring the accuracy and reliability of data. I'm passionate about data-driven decision-making and always looking for innovative solutions to complex problems.</p>
+        </section>
+
+        <section id="skills" class="card animated">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Python</h3>
+                    <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar"><div class="skill-progress" data-width="50%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>HTML/CSS</h3>
+                    <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>SQL</h3>
+                    <div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>React</h3>
+                    <div class="skill-bar"><div class="skill-progress" data-width="50%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3>PySpark</h3>
+                    <div class="skill-bar"><div class="skill-progress" data-width="60%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="card animated">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Blenheim Chalcot IT Services India Pvt. Ltd.</h3>
+                <p><em>Associate Data Engineer, April 2024 – Present</em></p>
+                <p>In my current role, I have been working on various projects. One of my main tasks has been creating APIs for different projects.</p>
+                <p>Right now, I'm excited about a new project I'm involved in. We're looking at ways to make the hiring process smoother for our HR team. The goal is to reduce some of manual efforts and repetitive tasks they deal with, so they can focus on finding the best people for our company. It's still a work in progress, but we're hoping it'll make a big difference in how efficiently we can bring new talent on board.</p>
+                <p>On top of my project work, I'm always trying to stay up-to-date with the latest in tech. I'm constantly learning new skills and practicing them. This helps me bring fresh ideas to my work and keeps things interesting.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Tvarit Solutions Pvt Ltd.</h3>
+                <p><em>Associate Software Developer, July 2022 – April 2024</em></p>
+                <p>Implemented a scalable AWS multi-account architecture, enhancing data management and analytics. Key components included AWS IoT Core for live data capture, Lambda and SQS for processing, and S3 & Timestream for sophisticated monitoring Streamlined operations to achieve notable increases in process efficiency and data accuracy while ensuring customer data isolation and security using distinct IAM roles for cross-account resource access.</p>
+                <p>Worked with the world's leading steel and aluminium wheel supplier <strong>Maxion Wheels</strong> to integrate their data from various sources like <strong>Timestream, S3, Athena, MySQL, DynamoDB, CSV content, API Gateway & Grafana</strong> for comprehensive monitoring.</p>
+                <p>Pioneered the automation of  CI/CD pipelines, leveraging <strong>Docker, AWS SAM, CloudFormation</strong>. This initiative significantly accelerated deployment cycles, enhanced code quality through automated testing, and facilitated seamless, scalable cloud infrastructure provisioning, marking a key advancement in development operations efficiency.</p>
+            </div>
+        </section>
+
+        <section id="education" class="card animated">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>B.E. Electronics Engineering</h3>
+                <p>Ramrao Adik Institute of Technology, 2021</p>
+                <p>CGPA: 6.81/10</p>
+            </div>
+            <div class="education-item">
+                <h3>Diploma</h3>
+                <p>Agnels Polytechnic, 2018</p>
+                <p>Aggregate: 73.4%</p>
+            </div>
+        </section>
+
+        <section id="certifications" class="card animated">
+            <h2>Certifications</h2>
+            <div class="certification-item">
+                <h3>Python Programming & Machine Learning</h3>
+                <p>Perfect eLearning</p>
+            </div>
+            <div class="certification-item">
+                <h3>Database Structures and Management with MySQL</h3>
+                <p>Coursera-Meta</p>
+            </div>
+            <div class="certification-item">
+                <h3>Power BI</h3>
+                <p>Simplilearn</p>
+            </div>
+        </section>
+
+        <section id="projects" class="card animated">
+            <h2>Projects</h2>
+            <h3>COVID Information Software</h3>
+            <p>Developed a software that provides information on bed availability and ambulance services in desired hospitals. The software utilizes AWS for server hosting and incorporates a built-in chatbot feature to offer basic assistance for health-related queries.</p>
+        </section>
+
+        <section id="hobbies" class="card animated">
+            <h2>Hobbies</h2>
+            <ul>
+                <li>1st Runner Up of India's Got Talent Season 8 in Group Singing (2018)</li>
+                <li>Guinness World Record Holder in an Amazon Music Launch Event (2019)</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="card animated">
+            <h2>Contact</h2>
+            <p>If you would like to get in touch, please connect with me on <a href="https://www.linkedin.com/in/anisha-choudhury-a9b0a4192/" target="_blank">LinkedIn</a> or email me at: <a href="mailto:canisha2018@gmail.com">canisha2018@gmail.com</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Anisha Choudhury. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+            });
+
+            // Animate skill bars
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const animateSkillBars = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.getAttribute('data-width');
+                        entry.target.style.width = width;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const skillObserver = new IntersectionObserver(animateSkillBars, { threshold: 0.5 });
+
+            skillBars.forEach(bar => {
+                skillObserver.observe(bar);
+            });
+
+            // Animate sections on scroll
+            const animatedSections = document.querySelectorAll('.animated');
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    const headerOffset = 70; // Adjust this value based on your header height
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
